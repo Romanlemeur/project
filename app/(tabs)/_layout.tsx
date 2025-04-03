@@ -5,49 +5,41 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
+        headerShown: false,
         tabBarStyle: {
           backgroundColor: '#ffffff',
           borderTopColor: '#e5e7eb',
-          height: 60,
+          height: 50,
           paddingBottom: 8,
         },
         tabBarActiveTintColor: '#3b82f6',
         tabBarInactiveTintColor: '#94a3b8',
-        headerStyle: {
-          backgroundColor: '#ffffff',
-          borderBottomColor: '#e5e7eb',
-          borderBottomWidth: 1,
-        },
-        headerTintColor: '#1e293b',
-        headerTitleStyle: {
-          fontWeight: '600',
-        },
       }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Discover',
+          title: '',
           tabBarIcon: ({ color, size }) => <Home color={color} size={size} />,
         }}
       />
       <Tabs.Screen
         name="search"
         options={{
-          title: 'Search',
+          title: '',
           tabBarIcon: ({ color, size }) => <Search color={color} size={size} />,
         }}
       />
       <Tabs.Screen
         name="categories"
         options={{
-          title: 'Categories',
+          title: '',
           tabBarIcon: ({ color, size }) => <Grid color={color} size={size} />,
         }}
       />
       <Tabs.Screen
         name="account"
         options={{
-          title: 'Account',
+          title: '',
           tabBarIcon: ({ color, size }) => <User color={color} size={size} />,
         }}
       />

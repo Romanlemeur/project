@@ -381,10 +381,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#1e293b',
     padding: 16,
+    marginTop: 25,
   },
   row: {
     paddingLeft: 16,
-    marginBottom: 24,
+    paddingBottom: 24,
   },
   card: {
     width: 280,

@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff',
     padding: 16,
+    paddingTop: 25,
   },
   searchContainer: {
     flexDirection: 'row',

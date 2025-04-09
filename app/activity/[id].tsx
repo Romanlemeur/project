@@ -666,11 +666,11 @@ export default function ActivityDetails() {
 
         <Text style={styles.price}>${activity.price} per person</Text>
 
-        <Text style={styles.sectionTitle}>About this experience</Text>
+        <Text style={styles.sectionTitle}>A propos de cette expérience</Text>
         <Text style={styles.description}>{activity.description}</Text>
 
         <Pressable style={styles.bookButton}>
-          <Text style={styles.bookButtonText}>Book Now</Text>
+          <Text style={styles.bookButtonText}>Réserver</Text>
         </Pressable>
       </View>
     </ScrollView>

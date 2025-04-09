@@ -1,7 +1,25 @@
 import { View, Text, StyleSheet, Pressable, Image } from 'react-native';
-import { Settings, Heart, Clock, LogOut } from 'lucide-react-native';
+import { Settings, Heart, Clock, LogOut, Edit } from 'lucide-react-native';
+import { useRouter } from 'expo-router';
+import { signOut } from './database/auth';
+import { useAuth } from '../context/AuthContext';
 
 export default function AccountScreen() {
+  const router = useRouter();
+  const { user, setUser } = useAuth();
+
+  const handleLogout = async () => {
+    const { success } = await signOut();
+    if (success) {
+      setUser(null);
+      router.replace('/login');
+    }
+  };
+
+  const handleChangeInterests = () => {
+    router.push('/interests');
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -24,15 +42,20 @@ export default function AccountScreen() {
           <Text style={styles.menuText}>Favorites</Text>
         </Pressable>
         
+        <Pressable style={styles.menuItem} onPress={handleChangeInterests}>
+          <Edit color="#3b82f6" size={24} />
+          <Text style={styles.menuText}>Changer mes intérêts</Text>
+        </Pressable>
+        
         <Pressable style={styles.menuItem}>
           <Clock color="#3b82f6" size={24} />
           <Text style={styles.menuText}>History</Text>
         </Pressable>
       </View>
 
-      <Pressable style={styles.logoutButton}>
+      <Pressable style={styles.logoutButton} onPress={handleLogout}>
         <LogOut color="#ef4444" size={24} />
-        <Text style={styles.logoutText}>Log Out</Text>
+        <Text style={styles.logoutText}>Déconnexion</Text>
       </Pressable>
     </View>
   );

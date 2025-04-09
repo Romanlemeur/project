@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { AlertCircle, Loader2 } from 'lucide-react-native';
-import { signUp, signIn } from './database/auth';
+import { signUp, signIn } from './(tabs)/database/auth';
 import { useRouter } from 'expo-router';
-import { useAuth } from '../context/AuthContext';
-
-
+import { useAuth } from './context/AuthContext';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -157,8 +155,8 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     color: '#f4a261', // Couleur visible
-    marginBottom: 100,
-   // Centrer le texte
+    marginBottom: 20,
+    textAlign: 'center', // Centrer le texte
   },
   errorText: {
     color: '#ef4444',

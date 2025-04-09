@@ -2,7 +2,7 @@ import { View, Text, ScrollView, StyleSheet, Image, Pressable, FlatList, Touchab
 import { useState } from 'react';
 import { Star, MapPin } from 'lucide-react-native';
 import { Link } from 'expo-router';
-import { useInterests } from '../context/InterestContext';
+import { useInterests } from '../context/interestcontext';
 import { ActivityIndicator } from 'react-native';
 import { useRecommendations } from '../../hooks/useRecommendations';
 
@@ -367,16 +367,17 @@ function ActivityCard({ activity }: { activity: Activity }) {
 
 export default function HomeScreen() {
   const { interests } = useInterests();
-  const { recommendations, isLoading, error } = useRecommendations();
+  const { recommendations, loading, error } = useRecommendations(interests);
 
   return (
     <ScrollView style={styles.container}>
       {/* Recommendations Section */}
       {recommendations.length > 0 && (
         <View style={styles.recommendationsContainer}>
+           <Text style={styles.welcomeText}>Bienvenue à Lyon</Text>
           <Text style={styles.recommendationsTitle}>Activités recommandées pour vous</Text>
           
-          {isLoading ? (
+          {loading ? (
             <ActivityIndicator size="large" color="#0000ff" style={styles.loader} />
           ) : error ? (
             <Text style={styles.errorText}>{error}</Text>
@@ -483,6 +484,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 8,
+  }, welcomeText: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#000000', 
+    marginBottom: 20,
+     
   },
   rating: {
     color: '#1e293b',
@@ -506,7 +513,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   recommendationsContainer: {
-    marginTop: 20,
+    marginTop: 50,
     paddingHorizontal: 16,
   },
   recommendationsTitle: {
@@ -557,7 +564,7 @@ const styles = StyleSheet.create({
     color: '#64748b',
     marginBottom: 8,
   },
-  ratingContainer: {
+  activityRatingContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },

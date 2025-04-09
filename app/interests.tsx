@@ -1,0 +1,69 @@
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, Alert, ScrollView } from 'react-native';
+import { styles } from '../app/(tabs)/styles';
+import { useRecommendations } from '../hooks/useRecommendations';
+import { useRouter } from 'expo-router';
+
+export const interests = [
+  'Histoire', 'Art', 'Cuisine', 'Shopping', 'Sport',
+  'Architecture', 'Culture', 'Vie nocturne', 'Nature', 'Musique',
+  'Festivals', 'Théâtre', 'Cinéma', 'Photographie', 'Street Art',
+  'Science', 'Littérature', 'Vin', 'Luxe', 'Parcs',
+  'Musées', 'Sculpture', 'Monuments', 'Artisanat local', 'Gastronomie',
+  'Sites religieux', 'Centres commerciaux', 'Antiquités', 'Vignobles', 'Vélo'
+];
+
+const InterestsScreen = () => {
+  const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
+  const { recommendations, loading, error } = useRecommendations(selectedInterests);
+  const router = useRouter();
+
+  const toggleInterest = (interest: string) => {
+    if (selectedInterests.includes(interest)) {
+      const newInterests = selectedInterests.filter(i => i !== interest);
+      setSelectedInterests(newInterests);
+    } else {
+      if (selectedInterests.length < 7) {
+        const newInterests = [...selectedInterests, interest];
+        setSelectedInterests(newInterests);
+      } else {
+        Alert.alert('Limite atteinte', 'Vous pouvez sélectionner jusqu\'à 7 intérêts maximum.');
+      }
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Choisissez vos centres d'intérêt (max 7)</Text>
+
+      <ScrollView contentContainerStyle={styles.interestContainer}>
+        {interests.map((item, index) => (
+          <TouchableOpacity
+            key={index}
+            style={[
+              styles.interestBubble,
+              selectedInterests.includes(item) && styles.selectedBubble,
+              index % 2 === 0 ? styles.oddBubble : styles.evenBubble,
+            ]}
+            onPress={() => toggleInterest(item)}
+          >
+            <Text style={styles.interestText}>{item}</Text>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          // Rediriger vers l'index après la sélection des intérêts
+          router.replace('/');
+        }}
+        disabled={selectedInterests.length === 0}
+      >
+        <Text style={styles.buttonText}>Continuer</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+export default InterestsScreen;

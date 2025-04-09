@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Alert, ScrollView, Image, ActivityIndicator } from 'react-native';
 import { styles } from './styles';
 import { useRecommendations } from '../../hooks/useRecommendations';
-import { useInterests } from '../context/InterestContext';
-import { Link } from 'expo-router';
+import { useInterests } from '../context/interestcontext';
+import { useRouter } from 'expo-router';
 
 export const interests = [
     'Histoire', 'Art', 'Cuisine', 'Shopping', 'Sport', 
@@ -17,8 +17,8 @@ export const interests = [
   const InterestsScreen = ({ navigation }: { navigation: any }) => {
     const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
     const { setInterests } = useInterests();
-    const { recommendations, isLoading, error } = useRecommendations();
-  
+    const { recommendations, loading, error } = useRecommendations(selectedInterests);
+    const router = useRouter();
     const toggleInterest = (interest: string) => {
       if (selectedInterests.includes(interest)) {
         const newInterests = selectedInterests.filter(i => i !== interest);
@@ -57,13 +57,16 @@ export const interests = [
   
         
   
-        <TouchableOpacity 
-          style={styles.button} 
-          onPress={() => navigation.navigate('NextScreen', { selectedInterests })}
-          disabled={selectedInterests.length === 0} 
-        >
-          <Text style={styles.buttonText}>Continuer</Text>
-        </TouchableOpacity>
+        <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          // Rediriger vers l'index après la sélection des intérêts
+          router.replace('/');
+        }}
+        disabled={selectedInterests.length === 0}
+      >
+        <Text style={styles.buttonText}>Continuer</Text>
+      </TouchableOpacity>
       </View>
     );
   };

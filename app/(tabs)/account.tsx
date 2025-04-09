@@ -34,7 +34,7 @@ export default function AccountScreen() {
       <View style={styles.menuSection}>
         <Pressable style={styles.menuItem}>
           <Settings color="#3b82f6" size={24} />
-          <Text style={styles.menuText}>Settings</Text>
+          <Text style={styles.menuText}>Parametres</Text>
         </Pressable>
         
         <Pressable style={styles.menuItem}>
@@ -47,10 +47,6 @@ export default function AccountScreen() {
           <Text style={styles.menuText}>Changer mes intérêts</Text>
         </Pressable>
         
-        <Pressable style={styles.menuItem}>
-          <Clock color="#3b82f6" size={24} />
-          <Text style={styles.menuText}>History</Text>
-        </Pressable>
       </View>
 
       <Pressable style={styles.logoutButton} onPress={handleLogout}>

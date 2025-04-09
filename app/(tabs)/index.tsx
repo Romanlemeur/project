@@ -410,21 +410,21 @@ export default function HomeScreen() {
         </View>
       )}
 
-      <Text style={styles.sectionTitle}>Featured Experiences</Text>
+      <Text style={styles.sectionTitle}>Expériences en vedette</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.row}>
         {activities.slice(0, 3).map((activity) => (
           <ActivityCard key={activity.id} activity={activity} />
         ))}
       </ScrollView>
       
-      <Text style={styles.sectionTitle}>Popular Adventures</Text>
+      <Text style={styles.sectionTitle}>Aventures Populaires</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.row}>
         {activities.slice(2).map((activity) => (
           <ActivityCard key={activity.id} activity={activity} />
         ))}
       </ScrollView>
 
-      <Text style={styles.sectionTitle}>Cultural Experiences</Text>
+      <Text style={styles.sectionTitle}>Expériences Culturelles</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.row}>
         {activities.slice(1, 4).map((activity) => (
           <ActivityCard key={activity.id} activity={activity} />
@@ -434,7 +434,6 @@ export default function HomeScreen() {
   );
 }
 
-// Add these new styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,

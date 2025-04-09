@@ -72,13 +72,12 @@ export const createRecommendationModel = (): RecommendationModel => {
       try {
         const input = encodeInterests(interests);
         const prediction = model.predict(input) as tf.Tensor;
-        await prediction.data(); // Juste pour forcer le calcul
+        await prediction.data(); 
 
-        // Le modèle ici est générique, donc on utilise toujours le fallback pour retourner des activités concrètes
         prediction.dispose();
         input.dispose();
 
-        return getFallbackRecommendations(interests); // Peut être remplacé par des résultats plus précis avec un vrai dataset
+        return getFallbackRecommendations(interests); 
       } catch (error) {
         console.error('Erreur de prédiction, utilisation du fallback :', error);
         return getFallbackRecommendations(interests);

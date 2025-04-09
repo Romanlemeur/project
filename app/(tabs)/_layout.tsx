@@ -10,7 +10,7 @@ export default function TabLayout() {
   const segments = useSegments();
 
   useEffect(() => {
-    // Si l'utilisateur n'est pas authentifié, rediriger vers login
+    
     if (!isLoading && !isAuthenticated) {
       router.replace('/login');
     }
@@ -29,7 +29,7 @@ export default function TabLayout() {
         tabBarActiveTintColor: '#3b82f6',
         tabBarInactiveTintColor: '#94a3b8',
       }}
-      // Masquer les fichiers database, login et interests dans la barre de navigation
+      
       >
       <Tabs.Screen
         name="index"

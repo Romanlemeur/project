@@ -1,8 +1,10 @@
 import { Tabs } from 'expo-router';
+import { InterestProvider } from '../context/InterestContext';
 import { Compass, Search, User, Grid2x2 as Grid } from 'lucide-react-native';
 
 export default function TabLayout() {
   return (
+    <InterestProvider>
     <Tabs
       screenOptions={{
         headerShown: false,
@@ -44,5 +46,6 @@ export default function TabLayout() {
         }}
       />
     </Tabs>
+    </InterestProvider>
   );
 }

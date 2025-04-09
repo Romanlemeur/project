@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, Alert, ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, FlatList, TouchableOpacity, Alert, ScrollView, Image, ActivityIndicator } from 'react-native';
 import { styles } from './styles';
+import { useRecommendations } from '../../hooks/useRecommendations';
+import { useInterests } from '../context/InterestContext';
+import { Link } from 'expo-router';
 
 export const interests = [
     'Histoire', 'Art', 'Cuisine', 'Shopping', 'Sport', 
@@ -13,15 +16,21 @@ export const interests = [
   
   const InterestsScreen = ({ navigation }: { navigation: any }) => {
     const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
+    const { setInterests } = useInterests();
+    const { recommendations, isLoading, error } = useRecommendations();
   
     const toggleInterest = (interest: string) => {
       if (selectedInterests.includes(interest)) {
-        setSelectedInterests(prev => prev.filter(i => i !== interest));
+        const newInterests = selectedInterests.filter(i => i !== interest);
+        setSelectedInterests(newInterests);
+        setInterests(newInterests);
       } else {
         if (selectedInterests.length < 7) {
-          setSelectedInterests(prev => [...prev, interest]);
+          const newInterests = [...selectedInterests, interest];
+          setSelectedInterests(newInterests);
+          setInterests(newInterests);
         } else {
-          Alert.alert('Limite atteinte', 'Vous pouvez sélectionner jusqu’à 7 intérêts maximum.');
+          Alert.alert('Limite atteinte', 'Vous pouvez sélectionner jusqu\'à 7 intérêts maximum.');
         }
       }
     };
@@ -45,6 +54,8 @@ export const interests = [
             </TouchableOpacity>
           ))}
         </ScrollView>
+  
+        
   
         <TouchableOpacity 
           style={styles.button} 

@@ -7,7 +7,66 @@ export const styles = StyleSheet.create({
     justifyContent: 'center', 
     alignItems: 'center', 
     padding: 20, 
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#f5f5f5',
+  },
+  
+  // Styles pour les recommandations
+  recommendationsContainer: {
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  recommendationsTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    color: '#333',
+  },
+  loader: {
+    marginVertical: 20,
+  },
+  errorText: {
+    color: 'red',
+    marginVertical: 10,
+  },
+  activityCard: {
+    width: 200,
+    marginRight: 15,
+    borderRadius: 10,
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    overflow: 'hidden',
+  },
+  activityImage: {
+    width: '100%',
+    height: 120,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+  activityInfo: {
+    padding: 10,
+  },
+  activityName: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  activityCategory: {
+    fontSize: 12,
+    color: '#666',
+    marginBottom: 5,
+  },
+  ratingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  activityRating: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: '#FF9529',
   },
   title: {
     fontSize: 20, 

@@ -24,11 +24,11 @@ export default function AccountScreen() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={{ uri: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200' }}
-          style={styles.avatar}
+         source={{ uri: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200' }}
+         style={styles.avatar}
         />
-        <Text style={styles.name}>John Doe</Text>
-        <Text style={styles.email}>john.doe@example.com</Text>
+        
+        <Text style={styles.email}>{user?.email || 'Email non disponible'}</Text>
       </View>
 
       <View style={styles.menuSection}>

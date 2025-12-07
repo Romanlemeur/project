@@ -30,14 +30,14 @@ export const interests = [
           setSelectedInterests(newInterests);
           setInterests(newInterests);
         } else {
-          Alert.alert('Limite atteinte', 'Vous pouvez sélectionner jusqu\'à 7 intérêts maximum.');
+          Alert.alert('Limite atteinte', 'Sélectionner 7 intérêts maximum.');
         }
       }
     };
   
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Choisissez vos centres d'intérêt (max 7)</Text>
+        <Text style={styles.title}>Choisissez vos centres d'intérêt</Text>
         
         <ScrollView contentContainerStyle={styles.interestContainer}>
           {interests.map((item, index) => (
@@ -60,7 +60,7 @@ export const interests = [
         <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          // Rediriger vers l'index après la sélection des intérêts
+          
           router.replace('/');
         }}
         disabled={selectedInterests.length === 0}

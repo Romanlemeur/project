@@ -23,18 +23,18 @@ export default function LoginScreen() {
 
     try {
       if (isLogin) {
-        // Connexion
+        
         const { success, errorMessage, user } = await signIn(email, password);
         if (!success) {
           setError(errorMessage ?? 'Erreur de connexion');
         } else {
-          // Mettre à jour l'utilisateur dans le contexte
+          
           if (user) {
             setUser({
               id: user.id,
               email: user.email || '',
             });
-            // Rediriger vers la page interests
+            
             router.replace('/interests');
           }
         }
@@ -45,7 +45,7 @@ export default function LoginScreen() {
           setError(errorMessage ?? 'Une erreur est survenue');
         } else {
           setSuccess(true);
-          // Après 2 secondes, passer en mode connexion
+          
           setTimeout(() => {
             setSuccess(false);
             setIsLogin(true);
@@ -156,9 +156,9 @@ const styles = StyleSheet.create({
   },  welcomeText: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#f4a261', // Couleur visible
+    color: '#f4a261', 
     marginBottom: 100,
-   // Centrer le texte
+   
   },
   errorText: {
     color: '#ef4444',

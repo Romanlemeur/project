@@ -62,25 +62,25 @@ export default function TabLayout() {
       <Tabs.Screen
         name="login"
         options={{
-          href: null, // Masquer dans la barre de navigation
+          href: null, 
         }}
       />
       <Tabs.Screen
         name="interests"
         options={{
-          href: null, // Masquer dans la barre de navigation
+          href: null, 
         }}
       />
       <Tabs.Screen
         name="database"
         options={{
-          href: null, // Masquer dans la barre de navigation
+          href: null, 
         }}
       />
       <Tabs.Screen
         name="styles"
         options={{
-          href: null, // Masquer dans la barre de navigation
+          href: null, 
         }}
       />
     </Tabs>

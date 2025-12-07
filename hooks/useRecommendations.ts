@@ -42,6 +42,6 @@ export const useRecommendations = (interests: string[]) => {
     recommendations,
     loading,
     error,
-    refresh: generateRecommendations, // utile pour recharger manuellement
+    refresh: generateRecommendations, 
   };
 };

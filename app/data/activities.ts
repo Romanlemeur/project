@@ -1,8 +1,3 @@
-/**
- * Fichier centralisant les données d'activités pour l'application
- * Ces données sont utilisées pour l'affichage et le modèle de recommandation
- */
-
 export interface Activity {
   id: string;
   name: string;
@@ -16,7 +11,6 @@ export interface Activity {
   description: string;
 }
 
-// Données d'activités centralisées
 export const activities: Activity[] = [
     {
         id: '1',
@@ -655,44 +649,28 @@ export const interestToCategoryMap: Record<string, string[]> = {
   'Vélo': ['Sport', 'Aventure']
 };
 
-/**
- * Fonction utilitaire pour obtenir une activité par son ID
- */
+
 export const getActivityById = (id: string): Activity | undefined => {
   return activities.find(activity => activity.id === id);
 };
 
-/**
- * Fonction utilitaire pour filtrer les activités par catégorie
- */
+
 export const getActivitiesByCategory = (category: string): Activity[] => {
   return activities.filter(activity => activity.category === category);
 };
-
-/**
- * Fonction utilitaire pour obtenir les activités recommandées basées sur les intérêts
- * Cette fonction est une version simplifiée qui peut être utilisée comme solution de secours
- * si le modèle TensorFlow.js n'est pas disponible
- */
 export const getRecommendedActivities = (interests: string[], limit: number = 7): Activity[] => {
-  // Si aucun intérêt n'est sélectionné, retourner des activités aléatoires
+  
   if (interests.length === 0) {
     return [...activities].sort(() => 0.5 - Math.random()).slice(0, limit);
   }
-
-  // Collecter toutes les catégories pertinentes basées sur les intérêts
   const relevantCategories = new Set<string>();
   interests.forEach(interest => {
     const categories = interestToCategoryMap[interest] || [];
     categories.forEach(category => relevantCategories.add(category));
   });
-
-  // Filtrer les activités par catégories pertinentes
   let filteredActivities = activities.filter(activity => 
     relevantCategories.has(activity.category)
   );
-
-  // Si pas assez d'activités trouvées, ajouter des activités aléatoires
   if (filteredActivities.length < limit) {
     const remainingActivities = activities.filter(
       activity => !filteredActivities.some(a => a.id === activity.id)
@@ -704,7 +682,6 @@ export const getRecommendedActivities = (interests: string[], limit: number = 7)
     ];
   }
 
-  // Limiter au nombre demandé et mélanger pour plus de variété
   return filteredActivities
     .sort(() => 0.5 - Math.random())
     .slice(0, limit);

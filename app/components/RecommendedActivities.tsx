@@ -9,8 +9,8 @@ interface RecommendedActivitiesProps {
 }
 
 export const RecommendedActivities = ({ title = 'Recommandé pour vous' }: RecommendedActivitiesProps) => {
-  const { interests } = useInterests(); // Récupérez les intérêts
-  const { recommendations, loading, error } = useRecommendations(interests); // Passez les intérêts au hook
+  const { interests } = useInterests(); 
+  const { recommendations, loading, error } = useRecommendations(interests); 
 
   if (loading) {
     return (

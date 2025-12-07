@@ -31,7 +31,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const router = useRouter();
 
   useEffect(() => {
-    // Vérifier si l'utilisateur est déjà connecté
+    
     const checkUser = async () => {
       const { data } = await supabase.auth.getSession();
       if (data.session?.user) {
@@ -45,7 +45,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     checkUser();
 
-    // Écouter les changements d'authentification
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
         if (event === 'SIGNED_IN' && session?.user) {

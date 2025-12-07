@@ -58,7 +58,7 @@ export const createRecommendationModel = (): RecommendationModel => {
         fallbackMode = false;
         return true;
       } catch (error) {
-        console.warn('Erreur lors du chargement de TensorFlow.js, mode fallback activé', error);
+        console.warn('Erreur lors du chargement de TensorFlow.js, mode failsafe toudoum! activé', error);
         fallbackMode = true;
         return false;
       }

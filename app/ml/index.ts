@@ -1,5 +1,5 @@
 import * as tf from '@tensorflow/tfjs';
-import { fetch } from '@tensorflow/tfjs-react-native';
+
 import { Activity, activities, interestToCategoryMap } from '../data/activities';
 
 export type { Activity };
@@ -9,7 +9,7 @@ export interface RecommendationModel {
   load: () => Promise<boolean>;
   isLoaded: boolean;
 }
-
+///mettre sur un serveur le model et le mettre a jours créer une api pour appel 
 
 export const createRecommendationModel = (): RecommendationModel => {
   let isModelLoaded = false;

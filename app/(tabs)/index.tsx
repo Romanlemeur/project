@@ -7,9 +7,7 @@ import { ActivityIndicator } from 'react-native';
 import { useRecommendations } from '../../hooks/useRecommendations';
 
 
-import { RecommendedActivities } from '../components/RecommendedActivities';
 
-// Mock data - replace with your actual data
 const activities = [
   {
     id: '1',

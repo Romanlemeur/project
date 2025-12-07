@@ -16,7 +16,6 @@ const categories = [
 export default function CategoriesScreen() {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  // Filtrer les activités en fonction de la catégorie sélectionnée
   const filteredActivities = activities.filter(activity =>
     selectedCategory === 'All' ? true : activity.category === selectedCategory
   );

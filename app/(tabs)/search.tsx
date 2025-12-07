@@ -8,7 +8,6 @@ export default function SearchScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
 
-  // Filtrer les activités basées sur la recherche
   const filteredActivities = activities.filter(activity =>
     activity.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     activity.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -27,7 +26,7 @@ export default function SearchScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Barre de recherche */}
+    
       <View style={styles.searchContainer}>
         <SearchIcon color="#64748b" size={20} style={styles.searchIcon} />
         <TextInput
@@ -41,7 +40,6 @@ export default function SearchScreen() {
         />
       </View>
 
-      {/* Résultats de recherche */}
       {searchQuery ? (
         <FlatList
           data={filteredActivities}
@@ -67,7 +65,7 @@ export default function SearchScreen() {
           contentContainerStyle={styles.resultsContainer}
         />
       ) : (
-        /* Historique des recherches */
+       
         <View style={styles.recentContainer}>
           <Text style={styles.sectionTitle}>Recherches récentes</Text>
           {recentSearches.length > 0 ? (

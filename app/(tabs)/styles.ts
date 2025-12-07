@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
   },
   
-  // Styles pour les recommandations
+ 
   recommendationsContainer: {
     marginTop: 20,
     marginBottom: 20,
